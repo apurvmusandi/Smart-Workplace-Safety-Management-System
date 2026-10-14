@@ -1,0 +1,13 @@
+{
+  "settings": {
+    "smsAlert": true,
+    "callAlert": false
+  },
+  "history": [],
+  "analytics": {
+    "totalAlerts": 0,
+    "criticalAlerts": 0,
+    "warnings": 0,
+    "resolvedEvents": 0
+  }
+}
