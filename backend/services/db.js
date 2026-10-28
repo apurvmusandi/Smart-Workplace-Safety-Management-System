@@ -58,8 +58,10 @@ class DbService {
         { key: 'adminPhone', value: '' },
         { key: 'supervisorPhone', value: '' },
         { key: 'thresholdTemp', value: '40' },
-        { key: 'thresholdSmoke', value: '1800' },
-        { key: 'thresholdCurrent', value: '0.35' }
+        { key: 'thresholdSmoke', value: '3500' },
+        { key: 'thresholdCurrent', value: '8.0' },
+        { key: 'enableFlame', value: '0' },
+        { key: 'enableSmoke', value: '0' }
       ]);
     }
   }

@@ -15,8 +15,8 @@ const EmergencyControl = () => {
     adminPhone: settings.adminPhone || '',
     supervisorPhone: settings.supervisorPhone || '',
     thresholdTemp: settings.thresholdTemp || 40,
-    thresholdSmoke: settings.thresholdSmoke || 1800,
-    thresholdCurrent: settings.thresholdCurrent || 0.35,
+    thresholdSmoke: settings.thresholdSmoke || 3500,
+    thresholdCurrent: settings.thresholdCurrent || 8.0,
   });
 
   // Sync state if settings change from backend
@@ -25,8 +25,8 @@ const EmergencyControl = () => {
       adminPhone: settings.adminPhone || '',
       supervisorPhone: settings.supervisorPhone || '',
       thresholdTemp: settings.thresholdTemp || 40,
-      thresholdSmoke: settings.thresholdSmoke || 1800,
-      thresholdCurrent: settings.thresholdCurrent || 0.35,
+      thresholdSmoke: settings.thresholdSmoke || 3500,
+      thresholdCurrent: settings.thresholdCurrent || 8.0,
     });
   }, [settings]);
 
@@ -173,7 +173,7 @@ const EmergencyControl = () => {
               <span className="text-xs text-white font-bold">{formConfig.thresholdCurrent}</span>
             </div>
             <input 
-              type="range" min="0.1" max="2.0" step="0.05"
+              type="range" min="1.0" max="30.0" step="0.5"
               name="thresholdCurrent" 
               value={formConfig.thresholdCurrent} 
               onChange={handleConfigChange} 

@@ -17,14 +17,14 @@ exports.processSensorData = (req, res) => {
   // Fetch dynamic thresholds from DB
   const settings = req.db.getSettings();
   const thrTemp = settings.thresholdTemp || 40;
-  const thrSmoke = settings.thresholdSmoke || 1800;
-  const thrCurrent = settings.thresholdCurrent || 0.35;
+  const thrSmoke = settings.thresholdSmoke || 3500;
+  const thrCurrent = settings.thresholdCurrent !== undefined ? settings.thresholdCurrent : 8.0;
 
   // Determine System Status based on dynamic thresholds (if not strictly provided by ESP32)
   let currentSystemStatus = systemStatus || 'SAFE';
   if (currentSystemStatus === 'SAFE') { // fallback check if ESP32 just sends SAFE
-    if (settings.enableFlame !== false && flame === 0) currentSystemStatus = 'FIRE';
-    else if (settings.enableSmoke !== false && smoke > thrSmoke) currentSystemStatus = 'SMOKE';
+    if (settings.enableFlame === true && flame === 0) currentSystemStatus = 'FIRE';
+    else if (settings.enableSmoke === true && smoke > thrSmoke) currentSystemStatus = 'SMOKE';
     else if (settings.enableTemp !== false && temperature > thrTemp) currentSystemStatus = 'HIGH_TEMP';
     else if (settings.enableCurrent !== false && current > thrCurrent) currentSystemStatus = 'OVER_CURRENT';
     else if (settings.enableVibration !== false && vibration) currentSystemStatus = 'VIBRATION';
